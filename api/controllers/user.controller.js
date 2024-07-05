@@ -1,5 +1,5 @@
-import User from "../models/user.model";
-import { errorHandler } from "../utils/error";
+import User from "../models/user.model.js";
+import { errorHandler } from "../utils/error.js";
 import bcryptjs from 'bcryptjs'
 export const test = (req, res) => {
     res.json({
@@ -22,7 +22,7 @@ export const updateUser = async(req, res, next) => {
                 avatar: req.body.avatar,
             }
         }, {new: true}) // adding new: true becuase it will update with new changes not old one
-        const { password, ...rest} = updateUser._doc;
+        const { password, ...rest} = updatedUser._doc;
         res.status(200).json(rest);
     } catch (error) {
         next(error);
